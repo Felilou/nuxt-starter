@@ -1,0 +1,21 @@
+{
+  "name": "nuxt-starter",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/content": "^3.16.2",
+    "@nuxt/image": "^2.2.0",
+    "@nuxt/ui": "^4.12.0",
+    "@nuxtjs/seo": "^6.0.1",
+    "nuxt": "^4.6.3",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
+  }
+}
