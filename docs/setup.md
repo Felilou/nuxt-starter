@@ -140,10 +140,17 @@ studio: {
       include: ['**/components/content/**']
     }
   }
+},
+
+// Nur die eigenen Bausteine analysieren, das hält den Dev-Start schnell
+componentMeta: {
+  exclude: [(component: { filePath: string }) => !component.filePath.replaceAll('\\', '/').includes('components/content/')]
 }
 ```
 
-In `studio-test` ausprobiert: Studio bietet danach nur noch die 7 Bausteine an. Felder für die Props gibt es nur mit TypeScript 5.x, siehe [studio-entwicklung.md](studio-entwicklung.md).
+In `studio-test` ausprobiert: Studio bietet nur noch die 7 Bausteine an. Ein Klick auf einen Baustein öffnet ein Formular mit allen Feldern und Hilfetexten. Ohne `componentMeta` werden alle Nuxt-UI-Komponenten mitanalysiert, und der Dev-Start dauert rund 60 statt 26 Sekunden.
+
+**`typescript` muss auf 5.x bleiben** (ist im Template so eingestellt). Mit TypeScript 7 zeigt Studio keine Formularfelder an, siehe [studio-entwicklung.md](studio-entwicklung.md).
 
 Lokal testen: `npm run dev`, dann unten links auf den Studio-Button klicken oder `Ctrl + .` drücken. Änderungen landen direkt in `content/` bzw. `public/`. Danach committen und pushen.
 

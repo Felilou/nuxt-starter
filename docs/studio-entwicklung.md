@@ -4,9 +4,9 @@ Diese Anleitung richtet sich an Entwickler. Sie zeigt, wie du Seiten, Komponente
 
 Stand: `nuxt-studio` 1.8, `@nuxt/content` 3.16 (Oktober 2026). In `studio-test` ausprobiert sind die Bausteine, das Erkennen der Props, Pflichtfelder und JSDoc-Hilfetexte sowie der Komponenten-Filter `studio.editor.components`. Nicht ausprobiert sind die Collection-Schemas mit `.editor()` (Abschnitte 3 und 4). Die sind nur aus dem Code von `@nuxt/content` abgeleitet.
 
-> ⚠️ **Mit TypeScript 7 (aktueller Stand des Templates) zeigt Studio keine Prop-Felder an.** Die Bausteine lassen sich einfügen, und Slot-Texte bearbeiten geht, aber Titel, Bild, Button usw. gibt es nicht als Formular, nur im Code-Modus. Grund: Studio liest Props über `vue-component-meta`, und das braucht die JavaScript-API von TypeScript, die TS 7 nicht mehr hat. Der Parser bricht still ab (`ts.readJsonConfigFile is not a function`).
+> ⚠️ **TypeScript muss 5.x bleiben** (`"typescript": "^5.9.3"`, im Template so eingestellt). Studio liest die Props über `vue-component-meta`, und das braucht die JavaScript-API von TypeScript, die TypeScript 7 nicht mehr hat. Mit TS 7 bricht der Parser still ab (`ts.readJsonConfigFile is not a function`), und beim Klick auf einen Baustein erscheint **kein Formular**. Nach einem Versionswechsel `.nuxt/component-meta.mjs` löschen, sonst bleibt das alte Ergebnis im Cache.
 >
-> Mit `"typescript": "^5.9.3"` funktionieren die Felder (in `studio-test` geprüft). Dafür dauert der Start von `npm run dev` rund 30 Sekunden länger, weil alle Komponenten analysiert werden. Nach jedem Versionswechsel `.nuxt/component-meta.mjs` löschen, sonst bleibt das alte Ergebnis im Cache.
+> Damit der Dev-Start schnell bleibt, `componentMeta.exclude` setzen, sodass nur `app/components/content/` analysiert wird (siehe [setup.md](setup.md), Abschnitt 5b). Gemessen: 7,6 s statt 27,6 s für die Analyse.
 
 ---
 
