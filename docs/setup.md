@@ -143,7 +143,7 @@ studio: {
 }
 ```
 
-In `studio-test` ausprobiert: Studio bietet danach nur noch die 7 Bausteine an, mit allen Feldern und Hilfetexten.
+In `studio-test` ausprobiert: Studio bietet danach nur noch die 7 Bausteine an. Felder für die Props gibt es nur mit TypeScript 5.x, siehe [studio-entwicklung.md](studio-entwicklung.md).
 
 Lokal testen: `npm run dev`, dann unten links auf den Studio-Button klicken oder `Ctrl + .` drücken. Änderungen landen direkt in `content/` bzw. `public/`. Danach committen und pushen.
 
