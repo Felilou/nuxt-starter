@@ -6,7 +6,7 @@ Stand: `nuxt-studio` 1.8, `@nuxt/content` 3.16 (Oktober 2026). In `studio-test` 
 
 > ⚠️ **TypeScript muss 5.x bleiben** (`"typescript": "^5.9.3"`, im Template so eingestellt). Studio liest die Props über `vue-component-meta`, und das braucht die JavaScript-API von TypeScript, die TypeScript 7 nicht mehr hat. Mit TS 7 bricht der Parser still ab (`ts.readJsonConfigFile is not a function`), und beim Klick auf einen Baustein erscheint **kein Formular**. Nach einem Versionswechsel `.nuxt/component-meta.mjs` löschen, sonst bleibt das alte Ergebnis im Cache.
 >
-> Damit der Dev-Start schnell bleibt, `componentMeta.exclude` setzen, sodass nur `app/components/content/` analysiert wird (siehe [setup.md](setup.md), Abschnitt 5b). Gemessen: 7,6 s statt 27,6 s für die Analyse.
+> Damit der Dev-Start schnell bleibt, `componentMeta.exclude` setzen, sodass nur `app/components/content/` analysiert wird (macht der Studio-Layer von `nuxt-base` ab v0.2.0 automatisch). Gemessen: 7,6 s statt 27,6 s für die Analyse.
 
 ---
 
@@ -221,7 +221,7 @@ Jeder Text, den der Kunde je ändern wollen könnte, gehört in eine Prop, einen
 
 ### Komponenten-Liste in Studio aufräumen
 
-Standardmäßig bietet Studio **alle** registrierten Komponenten an, also auch Dutzende aus Nuxt UI. Für Kunden ist es übersichtlicher, nur deine Blöcke anzubieten. Das stellst du in `nuxt.config.ts` ein:
+Standardmäßig bietet Studio **alle** registrierten Komponenten an, also auch Dutzende aus Nuxt UI. Der Studio-Layer von `nuxt-base` (ab v0.2.0) beschränkt das bereits auf `app/components/content/`. Gruppen für das Einfüge-Menü kannst du im Projekt zusätzlich in `nuxt.config.ts` einstellen:
 
 ```ts
 studio: {

@@ -38,7 +38,7 @@ Die Schritte 1–4 sind für beide Varianten gleich.
 
 ```ts
 export default defineNuxtConfig({
-  extends: ['github:Felilou/nuxt-base#v0.1.0'],
+  extends: ['github:Felilou/nuxt-base#v0.2.0'],
   site: {
     url: 'https://kunde-xyz.at', // die spätere echte Domain, ohne Slash am Ende
     name: 'Kunde XYZ GmbH'
@@ -128,27 +128,10 @@ npm install nuxt-studio
 In `nuxt.config.ts` den Studio-Layer ergänzen:
 
 ```ts
-extends: ['github:Felilou/nuxt-base#v0.1.0', 'github:Felilou/nuxt-base/studio#v0.1.0'],
+extends: ['github:Felilou/nuxt-base#v0.2.0', 'github:Felilou/nuxt-base/studio#v0.2.0'],
 ```
 
-Damit der Kunde in Studio nur die Bausteine des Templates sieht und nicht zusätzlich Dutzende Nuxt-UI-Komponenten, mit denen er das Layout umbauen könnte, ergänzt du in `nuxt.config.ts`:
-
-```ts
-studio: {
-  editor: {
-    components: {
-      include: ['**/components/content/**']
-    }
-  }
-},
-
-// Nur die eigenen Bausteine analysieren, das hält den Dev-Start schnell
-componentMeta: {
-  exclude: [(component: { filePath: string }) => !component.filePath.replaceAll('\\', '/').includes('components/content/')]
-}
-```
-
-In `studio-test` ausprobiert: Studio bietet nur noch die 7 Bausteine an. Ein Klick auf einen Baustein öffnet ein Formular mit allen Feldern und Hilfetexten. Ohne `componentMeta` werden alle Nuxt-UI-Komponenten mitanalysiert, und der Dev-Start dauert rund 60 statt 26 Sekunden.
+Mehr ist nicht nötig. Der Studio-Layer sorgt dafür, dass der Kunde nur die Bausteine aus `app/components/content/` einfügen kann und nicht die Nuxt-UI-Komponenten, mit denen er das Layout umbauen könnte. Ein Klick auf einen Baustein öffnet ein Formular mit allen Feldern und Hilfetexten. Der Layer analysiert außerdem nur diese Bausteine, das hält den Dev-Start schnell.
 
 **`typescript` muss auf 5.x bleiben** (ist im Template so eingestellt). Mit TypeScript 7 zeigt Studio keine Formularfelder an, siehe [studio-entwicklung.md](studio-entwicklung.md).
 

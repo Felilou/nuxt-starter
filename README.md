@@ -26,4 +26,4 @@ Vorlage für Kunden-Websites auf Basis von [nuxt-base](https://github.com/Felilo
 
 ## Basis aktualisieren
 
-Den Tag in `nuxt.config.ts` hochsetzen (z. B. `#v0.1.0` → `#v0.2.0`), dann `npm run dev` und prüfen.
+Den Tag in `nuxt.config.ts` hochsetzen (z. B. `#v0.2.0` → `#v0.3.0`), dann `npm run dev` und prüfen.
