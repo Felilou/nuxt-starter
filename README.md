@@ -2,6 +2,11 @@
 
 Vorlage für Kunden-Websites auf Basis von [nuxt-base](https://github.com/Felilou/nuxt-base).
 
+## Anleitungen
+
+- [docs/setup.md](docs/setup.md): von null zur gehosteten Website, mit und ohne Studio, inkl. DNS, SEO und Betrieb (Tokens, Sitzungen)
+- [docs/studio-entwicklung.md](docs/studio-entwicklung.md): Seiten, Komponenten und Daten so bauen, dass Kunden sie in Studio bearbeiten können
+
 ## Neues Kundenprojekt
 
 1. Auf GitHub „Use this template“ → Repo `kunde-xyz-website` anlegen, klonen, `npm install`.

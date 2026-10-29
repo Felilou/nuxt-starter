@@ -16,6 +16,8 @@ There is no linter or test setup.
 
 ## Project specifics
 
-- Pages are Markdown in `content/`, built with Nuxt UI components in MDC syntax (`::u-page-hero`). `content.config.ts` must keep the `pages` collection, because the layer's `[...slug].vue` queries it.
+- Pages are Markdown in `content/`, built from the blocks in `app/components/content/` in MDC syntax (`::hero-section`, `::text-section`, …). `content.config.ts` must keep the `pages` collection, because the layer's `[...slug].vue` queries it.
+- Blocks split content from layout: clients edit props and slots (text, images, links) in Studio, while layout and heading levels stay fixed in code for SEO. `HeroSection` renders the page's only `<h1>`, and other blocks render `<h2>`/`<h3>`. Image blocks require `imageAlt` and use `<NuxtImg>` with fixed sizes. Follow this pattern for new blocks, and give props German JSDoc, because Studio shows them to clients. See `docs/studio-entwicklung.md`.
 - Customize through `app/app.config.ts` (`ui.colors`, `navigation`, `footerLinks`) and `site` in `nuxt.config.ts`. To override a layer file (component, layout, page), create a file at the same path.
+- Keep `typescript` on 5.x. TypeScript 7 lacks the JS API that `vue-component-meta` needs, so Studio would silently show no prop fields. After changing it, delete `.nuxt/component-meta.mjs` (cached result).
 - Don't change `/health.json`. The central monitoring tool reads it.
